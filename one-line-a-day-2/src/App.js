@@ -10,6 +10,7 @@ import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
 import HomePage from './components/MainPage/HomePage';
 import CreateEntry from './components/MainPage/CreateEntry';
+import EntrySummary from './components/MainPage/CreateEntry';
 
 
 
@@ -25,6 +26,7 @@ render() {
         {/* <Login /> */}
         <NavBar />
         <Switch>
+        <EntrySummary />
         <Route path='/login' component={Login} /> 
         <Route path='/signup' component={SignUp}/>
         <Route path='/' component={HomePage}/>
