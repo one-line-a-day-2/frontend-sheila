@@ -26,7 +26,7 @@ render() {
         {/* <Login /> */}
         <NavBar />
         <Switch>
-        <EntrySummary />
+        {/* <EntrySummary /> */}
         <Route path='/login' component={Login} /> 
         <Route path='/signup' component={SignUp}/>
         <Route path='/' component={HomePage}/>
