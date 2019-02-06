@@ -11,6 +11,7 @@ import SignUp from './components/Authentication/SignUp';
 import HomePage from './components/MainPage/HomePage';
 import CreateEntry from './components/MainPage/CreateEntry';
 import EntrySummary from './components/MainPage/CreateEntry';
+import EntryDetail from './components/MainPage/EntryDetail';
 
 
 
@@ -29,9 +30,9 @@ render() {
         {/* <EntrySummary /> */}
         <Route path='/login' component={Login} /> 
         <Route path='/signup' component={SignUp}/>
-        <Route path='/' component={HomePage}/>
-
-        <Route path='/createentry' component={CreateEntry}/>        
+        <Route exact path='/' component={HomePage}/>
+        {/* <Route path='/homepage/:id' component={EntryDetail} /> */}
+        <Route path='/create' component={CreateEntry}/>        
         </Switch>
       </div>
     );

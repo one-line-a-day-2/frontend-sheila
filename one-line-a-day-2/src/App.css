@@ -13,6 +13,10 @@ h1{
   font-family: 'Rajdhani', sans-serif;
 }
 
+h2{
+  font-family: 'Rajdhani', sans-serif;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +39,48 @@ h1{
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+.card{
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 50px;
+  /* margin: auto; */
+  margin-left:25px;
+  margin-top:40px;
+  margin-bottom:40px;
+  width:40%;
+}
+
+.loginForm{
+  display: flex;
+  justify-content: center;
+  background:#556;
+  /* color:white; */
+  z-index:-3;
+  color:#2ec;
+ 
+  
+}
+
+.signUpForm{
+  display: flex;
+  justify-content: center;
+  background:#556;
+  color:#2ec;
+
+}
+
+.createContainer{
+  display: flex;
+  justify-content: center;
+}
+
+input{
+  color: white;
 }
