@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers';
+import rootReducer from './components/store/reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router } from 'react-router-dom';
 import logger from 'redux-logger';

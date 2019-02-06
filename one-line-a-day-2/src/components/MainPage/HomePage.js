@@ -1,18 +1,34 @@
-import React from 'react';
-import EntrySummary from './EntrySummary';
+import React, { Component } from 'react';
+// import EntrySummary from './EntrySummary';
+import { connect } from 'react-redux';
+import EntriesList from '../MainPage/EntriesList';
 
 
 
-const HomePage = () => {
+class HomePage extends Component {
+    
+    render(){
+    console.log(this.props)    
     return (
         <div>
-            {/* <h1>HOME</h1> */}
-            <EntrySummary />
+            <h1>HOME</h1>
+            {/* <EntrySummary /> */}
+            <EntriesList />
 
         </div>
-    )
+        )
+    }
 }
 
-export default HomePage;
+
+
+const mapStateToProps = (state) => {
+    return{
+      entries: state.entry.entries
+    }
+}
+
+
+export default connect(mapStateToProps)(HomePage);
 
 
