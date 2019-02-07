@@ -1,0 +1,5 @@
+[build]
+    base='one-line-a-day-2/'
+    publish='one-line-a-day-2/build/'
+    command='yarn build'
+    
