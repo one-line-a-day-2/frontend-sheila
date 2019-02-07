@@ -6,7 +6,7 @@ const EntryDetail = (props) => {
         <div className='cont-sec entry-detail'>
             <div className='card z-depth-0'>
                 <div className='card-content'>
-                <span className='card-title'> Entry Title </span>
+                <span className='card-title'>Entry Title - {id}</span>
                 <p>Lorem ipsum</p>
 
                 </div>

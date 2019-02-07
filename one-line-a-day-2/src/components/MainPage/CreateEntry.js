@@ -65,7 +65,7 @@ render() {
         <div className="createContainer">
 
         <form onSubmit={this.handleSubmit}>
-        <h2 className='grey-text text-darken-3'>Create An Entry:</h2>
+        <h2 className='deep-purple-text text-darken-2'>Create An Entry:</h2>
 
         <input 
                     name='title'

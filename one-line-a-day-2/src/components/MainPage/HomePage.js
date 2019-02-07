@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import EntrySummary from './EntrySummary';
 import { connect } from 'react-redux';
 import EntriesList from '../MainPage/EntriesList';
+import { fetchEntry } from '../store/actions/entryActions';
 
 
 
 class HomePage extends Component {
+
+
+ componentDidMount() {
+     this.props.fetchEntry();
+ }   
     
     render(){
     console.log(this.props)  

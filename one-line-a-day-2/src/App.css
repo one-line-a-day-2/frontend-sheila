@@ -11,10 +11,12 @@
 
 h1{
   font-family: 'Rajdhani', sans-serif;
+  
 }
 
 h2{
   font-family: 'Rajdhani', sans-serif;
+  color:#048;
 }
 
 .App-header {
@@ -82,5 +84,5 @@ h2{
 }
 
 input{
-  color: white;
+  color:#048;
 }
