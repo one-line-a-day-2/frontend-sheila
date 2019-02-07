@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EntrySummary = () => {
+const EntrySummary = ({entry}) => {
     return (
        
   <div class="card">

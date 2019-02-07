@@ -1,7 +1,8 @@
 import React from 'react'; 
-import axios from 'axios';
-// import { connect } from 'react-redux';
-
+// import axios from 'axios';
+import { connect } from 'react-redux';
+// import { createEntry } from './components/store/actions/entryActions';
+import { createEntry } from '../../store/actions/entryActions';
 
 
 class CreateEntry extends React.Component {
@@ -22,6 +23,7 @@ class CreateEntry extends React.Component {
    handleSubmit = e => {
      console.log(this.state)
     e.preventDefault();
+    this.props.createEntry(this.state)
    }
     
     
@@ -95,6 +97,11 @@ render() {
 }
 } 
 
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createEntry: (entry) => dispatch(createEntry(entry))
+    }
+}
 
 
-export default CreateEntry;
+export default connect(null,mapDispatchToProps)(CreateEntry);

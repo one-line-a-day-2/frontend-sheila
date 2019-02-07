@@ -1,6 +1,6 @@
 
 
-const authReducer = {}
+const initialState = {}
 
 
 const authReducer = (state = initialState, action) => {

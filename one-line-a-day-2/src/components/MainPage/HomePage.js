@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import EntrySummary from './EntrySummary';
+import EntrySummary from './EntrySummary';
 import { connect } from 'react-redux';
 import EntriesList from '../MainPage/EntriesList';
 
@@ -8,12 +8,13 @@ import EntriesList from '../MainPage/EntriesList';
 class HomePage extends Component {
     
     render(){
-    console.log(this.props)    
+    console.log(this.props)  
+    const { entries } = this.props  
     return (
         <div>
             <h1>HOME</h1>
-            {/* <EntrySummary /> */}
-            <EntriesList />
+            <EntrySummary />
+            <EntriesList entires={entries} />
 
         </div>
         )
