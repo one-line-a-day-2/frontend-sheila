@@ -2,7 +2,7 @@ import React from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
 // import { createEntry } from './components/store/actions/entryActions';
-import { createEntry } from '../../store/actions/entryActions';
+import { createEntry } from '../store/actions/entryActions';
 
 
 class CreateEntry extends React.Component {
