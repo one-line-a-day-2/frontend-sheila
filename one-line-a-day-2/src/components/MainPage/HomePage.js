@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EntrySummary from './EntrySummary';
+// import EntrySummary from './EntrySummary';
 import { connect } from 'react-redux';
 import EntriesList from '../MainPage/EntriesList';
 import { fetchEntry } from '../store/actions/entryActions';
@@ -19,8 +19,8 @@ class HomePage extends Component {
     return (
         <div>
             <h1>HOME</h1>
-            <EntrySummary />
-            <EntriesList entires={entries} />
+            {/* <EntrySummary /> */}
+            <EntriesList entries={this.props.entries} />
 
         </div>
         )
@@ -39,7 +39,6 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps,
-    {fetchEntry})
-    (HomePage);
+    {fetchEntry})(HomePage);
 
 

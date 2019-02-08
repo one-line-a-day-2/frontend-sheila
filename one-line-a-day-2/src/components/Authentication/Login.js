@@ -1,5 +1,5 @@
 import  React from 'react'; 
-import axios from 'axios';
+// import axios from 'axios';
 import { fetchLogin } from '../store/actions/entryActions'
 import { connect } from 'react-redux';
 
@@ -25,8 +25,7 @@ class Login extends React.Component {
 
    handleSubmit = e => {
      e.preventDefault();
-       this.props.fetchLogin
-       ({username: this.state.username, password: this.state.password})
+       this.props.fetchLogin({username: this.state.username, password: this.state.password})
 
     
 

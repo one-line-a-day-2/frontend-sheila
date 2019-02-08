@@ -26,7 +26,9 @@ class CreateEntry extends React.Component {
     this.props.createEntry(this.state)
    }
     
-    
+    addNewEntry = e =>{
+        e.preventDefault();
+    }
 
   //  handleSubmit = e => {
   //    e.preventDefault();

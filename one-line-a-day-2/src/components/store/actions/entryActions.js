@@ -23,8 +23,8 @@ export const ENTRY_DELETE_FAILURE= 'ENTRY_DELETE_FAIL';
 
 //login user
 export const fetchLogin = loginStatus => dispatch => {
-    dispatch({LOGIN_START})
-    .post("https://one-line-a-day-2.herokuapp.com/api/login", loginStatus)
+    dispatch({ type: LOGIN_START})
+    axios.post("https://one-line-a-day-2.herokuapp.com/api/login", loginStatus)
     .then(res => {
       console.log(res);
       localStorage.setItem("jwt", res.data.token);
@@ -37,20 +37,34 @@ export const fetchLogin = loginStatus => dispatch => {
     .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err }));
 };
 
-export const createEntry = (entry) => {
-    return (dispatch, getState) => {
 
-//make async call to database
 
-       dispatch({ type: 'ENTRY_START, entry'}) 
+export const createEntry = (userID, entry) => dispatch =>{
+    dispatch({ type: 'ENTRY_ADD_START' })
+    const token = localStorage.getItem('jwt')
+    const newAdd = {
+        headers: {
+            Authorization: token
+        }
     }
+    axios.post(`https://one-line-a-day-2.herokuapp.com/api/users/${userID}/entries`, entry, newAdd)
+    .then(res =>{
+        console.log(res)
+        dispatch({
+            type: ENTRY_ADD_SUCCESS,
+            payload: res.data
+        })
+    })
+    .catch(err => dispatch({
+        type: ENTRY_ADD_FAILURE, payload: err
+    }))
 }
+
+
 
 // this: will display an entry 
 export const fetchEntry = (userID) => dispatch => {
-    console.log(userID)
     dispatch({ type: ENTRY_START })
-    console.log(userID);
   const token = localStorage.getItem("jwt");
   const entry = {
     headers: {
