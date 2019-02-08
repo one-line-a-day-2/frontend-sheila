@@ -5,22 +5,14 @@ const EntriesList = props => {
     return (
         <div className='cards'>
 
-        {props.entries.map(entry => {
+         {props.entries.map(entry => {
             return(
-            <h2 key={entry.id} > {entry.entry} </h2> 
+            <h5 key={entry.id} > {entry.entry} </h5> 
             )
         })}
 
 
 
-        {/* <EntrySummary />
-        <EntrySummary />
-        <EntrySummary />
-        <EntrySummary />  */}
-
-
-{/* <EntrySummary  */} 
-{/* //mapped through for the summary card save for later possibly  */}
         
         </div>
     )

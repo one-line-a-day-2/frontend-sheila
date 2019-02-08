@@ -12,12 +12,26 @@
 h1{
   font-family: 'Rajdhani', sans-serif;
   
+  
 }
 
 h2{
   font-family: 'Rajdhani', sans-serif;
   color:#048;
 }
+
+h5{
+  font-size:1.1rem;
+  border:2px solid black;
+  display: flex;
+  width:500px;
+  text-align: justify;
+  padding: 20px;
+  margin-left:20px;
+  line-height: 1.8rem;
+
+}
+
 
 .App-header {
   background-color: #282c34;
