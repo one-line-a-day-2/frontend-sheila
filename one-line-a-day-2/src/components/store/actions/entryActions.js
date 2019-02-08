@@ -42,7 +42,7 @@ export const createEntry = (entry) => {
 
 //make async call to database
 
-       dispatch({ type: 'CREATE_PROJECT, entry'}) 
+       dispatch({ type: 'ENTRY_START, entry'}) 
     }
 }
 

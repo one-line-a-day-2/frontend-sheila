@@ -1,9 +1,6 @@
 import {LOGIN_START,
         LOGIN_SUCCESS,
-        LOGIN_FAILURE,
-        ENTRY_START,
-        ENTRY_SUCCESS,
-        ENTRY_FAILURE} from '../actions/entryActions'
+        LOGIN_FAILURE} from '../actions/entryActions'
 
 
 
@@ -34,7 +31,10 @@ const authReducer = (state = initialState, action) => {
           fetchLogin: false,
           error: action.payload
         }; 
+    default:
+        return state;
     }
+
 
 }
 

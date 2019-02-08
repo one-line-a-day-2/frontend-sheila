@@ -10,7 +10,7 @@ class HomePage extends Component {
 
 
  componentDidMount() {
-     this.props.fetchEntry();
+     this.props.fetchEntry(this.props.userId);
  }   
     
     render(){
@@ -31,11 +31,15 @@ class HomePage extends Component {
 
 const mapStateToProps = (state) => {
     return{
-      entries: state.entry.entries
+      entries: state.entry.entries,
+      fetchEntry: state.entry.fetchEntry,
+      userId: state.auth.userId
     }
 }
 
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps,
+    {fetchEntry})
+    (HomePage);
 
 

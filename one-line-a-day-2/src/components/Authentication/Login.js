@@ -1,7 +1,7 @@
 import  React from 'react'; 
 import axios from 'axios';
 import { fetchLogin } from '../store/actions/entryActions'
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 
 
@@ -15,26 +15,18 @@ class Login extends React.Component {
         }
     }
     
-    //  this.onSubmit = this.onSubmit.bind(this);
-    // this.handleChanges = this.handleChanges.bind(this)
-    
+ 
+    componentDidUpdate(prevProps, prevState){
+        if(localStorage.getItem('jwt')){
+            this.props.history.push('/')
+        }
+    }
     
 
    handleSubmit = e => {
      e.preventDefault();
-        const endpoint = 'https://one-line-a-day-2.herokuapp.com/api/login';
-    axios
-      .post(endpoint, this.state)
-      .then(res => {
-        localStorage.setItem("jwt", res.data.token);
-      })
-      .then(() => {
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        console.log({ Error: err });
-      }); 
-
+       this.props.fetchLogin
+       ({username: this.state.username, password: this.state.password})
 
     
 
@@ -52,7 +44,6 @@ class Login extends React.Component {
 
 render() {
 
-    // const { username, password } = this.state;
     return (
         <div className="loginForm">
             
@@ -91,6 +82,11 @@ render() {
 } 
 
 
+const mapsStateToProps = state => ({
+    fetchLogin: state.auth.fetchLogin
+})
 
-
-export default Login;
+export default connect(
+    mapsStateToProps,
+    { fetchLogin }
+) (Login);
