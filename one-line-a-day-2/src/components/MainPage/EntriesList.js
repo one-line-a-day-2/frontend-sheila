@@ -10,7 +10,7 @@ const EntriesList = props => {
             <div>
             <h5 key={entry.id} > {entry.entry} </h5>
 
-            <button>Delete</button> 
+            <button onClick={e =>props.deleteEntry(e, entry.id)}>Delete</button> 
             </div>
             )
         })}

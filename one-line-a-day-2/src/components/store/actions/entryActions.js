@@ -43,7 +43,7 @@ export const fetchLogin = loginStatus => dispatch => {
 // this: this fetches the entry from db
 export const fetchEntry = (userID) => dispatch => {
     dispatch({ type: ENTRY_START })
-  const token = localStorage.getItem("jwt");
+  const token = localStorage.getItem('jwt');
   const entry = {
     headers: {
       Authorization: token
@@ -53,7 +53,7 @@ export const fetchEntry = (userID) => dispatch => {
     .get(`https://one-line-a-day-2.herokuapp.com/api/users/${userID}/entries`, entry)
     .then(res => {
       console.log("fetch done");
-      dispatch({ type: ENTRY_SUCCESS, payload: res.data });
+      dispatch({ type: ENTRY_SUCCESS, payload: res.data, userID });
     })
     .catch(err => dispatch({ 
         type: ENTRY_FAILURE, payload: err }));

@@ -24,7 +24,7 @@ class CreateEntry extends React.Component {
     e.preventDefault();
     this.props.createEntry(this.props.userId, {
         entry: this.state.entry,
-        userId: this.props.userId
+        user_id: this.props.userId
     })
 
     this.props.fetchEntry();
