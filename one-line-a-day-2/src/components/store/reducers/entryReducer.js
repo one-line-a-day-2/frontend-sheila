@@ -13,6 +13,7 @@ import {ENTRY_START,
 const initialState = {  
         entries: [],
         fetchEntries:false,
+        deleteEntries:false,
         error: null
 
 }
@@ -42,6 +43,8 @@ const entryReducer = (state = initialState, action) => {
             }
 
 
+
+
         case  ENTRY_ADD_START:
             return{
                 ...state,
@@ -61,6 +64,32 @@ const entryReducer = (state = initialState, action) => {
                 ...state,
                 fetchEntries: false,
                 error: action.payload
+            }
+
+
+
+
+
+            case ENTRY_DELETE_START:
+            return {
+                ...state,
+                deleteEntries: true
+            }
+
+            case ENTRY_DELETE_SUCCESS:
+            return {
+                ...state,
+                deleteEntries: false,
+                entries: state.entries.filter( entry => action.id !== entryReducer.id ),
+                error: null
+            }
+
+            case ENTRY_DELETE_FAILURE:
+            return{
+                ...state,
+                deleteEntries:false,
+                error: action.payload
+
             }
 
 

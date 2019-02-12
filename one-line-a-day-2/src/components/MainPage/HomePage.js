@@ -2,7 +2,7 @@
 // import EntrySummary from './EntrySummary';
 import { connect } from 'react-redux';
 import EntriesList from '../MainPage/EntriesList';
-import { fetchEntry } from '../store/actions/entryActions';
+import { fetchEntry, deleteEntry } from '../store/actions/entryActions';
 
 
 
@@ -12,6 +12,12 @@ class HomePage extends Component {
  componentDidMount() {
      this.props.fetchEntry(this.props.userId);
  }   
+
+
+ deleteEntry = (e, entryId) => {
+     e.preventDefault()
+     this.props.deleteEntry(this.props.userId, entryId)
+ }
     
     render(){
     console.log(this.props)  
@@ -20,7 +26,7 @@ class HomePage extends Component {
         <div>
             <h1>HOME</h1>
             {/* <EntrySummary /> */}
-            <EntriesList entries={this.props.entries} />
+            <EntriesList entries={this.props.entries} deleteEntry={this.deleteEntry} />
 
         </div>
         )
@@ -39,6 +45,6 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps,
-    {fetchEntry})(HomePage);
+    {fetchEntry, deleteEntry})(HomePage);
 
 

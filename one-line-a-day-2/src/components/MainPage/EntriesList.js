@@ -1,5 +1,5 @@
 import React from 'react';
-import EntrySummary from './EntrySummary';
+// import EntrySummary from './EntrySummary';
 
 const EntriesList = props => {
     return (
@@ -7,7 +7,11 @@ const EntriesList = props => {
 
          {props.entries.map(entry => {
             return(
-            <h5 key={entry.id} > {entry.entry} </h5> 
+            <div>
+            <h5 key={entry.id} > {entry.entry} </h5>
+
+            <button>Delete</button> 
+            </div>
             )
         })}
 
