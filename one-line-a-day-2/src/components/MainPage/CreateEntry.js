@@ -2,15 +2,14 @@ import React from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
 // import { createEntry } from './components/store/actions/entryActions';
-import { createEntry } from '../store/actions/entryActions';
+import { createEntry, fetchEntry } from '../store/actions/entryActions';
 
 
 class CreateEntry extends React.Component {
   constructor(props) {
     super(props) 
         this.state = {
-            title: '',
-            content: ''
+            entry: ''
             
         }
     }
@@ -23,13 +22,16 @@ class CreateEntry extends React.Component {
    handleSubmit = e => {
      console.log(this.state)
     e.preventDefault();
-    this.props.createEntry(this.state)
+    this.props.createEntry(this.props.userId, {
+        entry: this.state.entry,
+        userId: this.props.userId
+    })
+
+    this.props.fetchEntry();
+    this.props.history.push('/')
    }
     
-    addNewEntry = e =>{
-        e.preventDefault();
-    }
-
+  
   //  handleSubmit = e => {
   //    e.preventDefault();
   //       const endpoint = 'https://one-line-a-day-2.herokuapp.com/api/users/userID/entries';
@@ -70,21 +72,14 @@ render() {
         <h2 className='deep-purple-text text-darken-2'>Create An Entry:</h2>
 
         <input 
-                    name='title'
+                    name='entry'
                     type='text'
-                    value={this.state.title}
-                    placeholder='Title'
+                    value={this.state.entry}
+                    placeholder='Start here...'
                     onChange={this.handleChanges}
                 />
 
-                <input 
-                    name='content'
-                    type='text'
-                    value={this.state.content}
-                    placeholder='Content'
-                    onChange={this.handleChanges}
-                />
-
+              
                
             
                 <button className='btn grey darken-4 z-depth-0'type='submit'>Create</button>       
@@ -99,11 +94,13 @@ render() {
 }
 } 
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => {
     return{
-        createEntry: (entry) => dispatch(createEntry(entry))
+       fetchEntries: state.entry.fetchEntries,
+       entries:state.entry.entries,
+       userId: state.auth.userId
     }
 }
 
 
-export default connect(null,mapDispatchToProps)(CreateEntry);
+export default connect(mapStateToProps,{createEntry,fetchEntry})(CreateEntry);
