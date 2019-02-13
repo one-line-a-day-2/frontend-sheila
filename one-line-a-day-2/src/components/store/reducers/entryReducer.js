@@ -6,7 +6,10 @@ import {ENTRY_START,
         ENTRY_ADD_FAILURE,
         ENTRY_DELETE_START,
         ENTRY_DELETE_SUCCESS,
-        ENTRY_DELETE_FAILURE } from '../actions/entryActions'
+        ENTRY_DELETE_FAILURE,
+        ENTRY_UPDATE_START,
+        ENTRY_UPDATE_SUCCESS,
+        ENTRY_UPDATE_FAILURE} from '../actions/entryActions'
     
 
 
@@ -14,6 +17,7 @@ const initialState = {
         entries: [],
         fetchEntries:false,
         deleteEntries:false,
+        updateEntries:false,
         error: null
 
 }
@@ -84,13 +88,37 @@ const entryReducer = (state = initialState, action) => {
                 error: null
             }
 
-            case ENTRY_DELETE_FAILURE:
-            return{
-                ...state,
-                deleteEntries:false,
-                error: action.payload
+            // case ENTRY_DELETE_FAILURE:
+            // return{
+            //     ...state,
+            //     deleteEntries:false,
+            //     error: action.payload
 
-            }
+            // }
+
+            // case ENTRY_UPDATE_START:
+            //     return{
+            //         ...state,
+            //         updateEntries:true,
+
+            // }
+
+            // case ENTRY_UPDATE_SUCCESS:
+            // return{
+            //     ...state,
+            //     updateEntries:false,
+
+            // }
+
+            // case ENTRY_UPDATE_FAILURE:
+            //     return{
+            //         ...state,
+            //         updateEntries:false,
+            //         error: action.payload
+
+            // }
+
+
 
 
 

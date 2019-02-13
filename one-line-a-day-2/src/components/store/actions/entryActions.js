@@ -20,6 +20,10 @@ export const ENTRY_DELETE_START= 'ENTRY_DELETE_START';
 export const ENTRY_DELETE_SUCCESS= 'ENTRY_DELETE_SUCCESS';
 export const ENTRY_DELETE_FAILURE= 'ENTRY_DELETE_FAIL';
 
+export const ENTRY_UPDATE_START= 'ENTRY_UPDATE_START';
+export const ENTRY_UPDATE_SUCCESS= 'ENTRY_UPDATE_SUCCESS';
+export const ENTRY_UPDATE_FAILURE= 'ENTRY_UPDATE_FAILURE';
+
 
 //login user
 export const fetchLogin = loginStatus => dispatch => {
@@ -27,7 +31,7 @@ export const fetchLogin = loginStatus => dispatch => {
     axios
     .post("https://one-line-a-day-2.herokuapp.com/api/login", loginStatus)
     .then(res => {
-      console.log(res);
+      
       localStorage.setItem("jwt", res.data.token);
       dispatch({
         type: LOGIN_SUCCESS,
@@ -100,6 +104,23 @@ export const deleteEntry = (userID, entryID) => dispatch =>{
     })
     .catch(err => dispatch({ type: ENTRY_DELETE_FAILURE, payload: err}))
 }
+
+
+// export const updateEntry = (userID, entryID) => dispatch => {
+//     dispatch({ type: ENTRY_UPDATE_START })
+//     const token = localStorage.getItem('jwt')
+//     const updateEn = {
+//         headers: {
+//             Authorization: token
+//         }
+//     }
+//     axios
+//     .put('https://one-line-a-day-2.herokuapp.com/api/users/${userID}/entries/${entryID}',updateEn)
+//     .then(res => {dispatch ({ type: ENTRY_UPDATE_SUCCESS,payload: entryID })
+        // })
+        // .catch(err => dispatch({ type: ENTRY_UPDATE_FAILURE,payload: err})
+
+// }
 
 
 

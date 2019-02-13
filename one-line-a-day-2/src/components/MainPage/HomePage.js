@@ -18,6 +18,11 @@ class HomePage extends Component {
      e.preventDefault()
      this.props.deleteEntry(this.props.userId, entryId)
  }
+
+ updateEntry = (e, entryId) => {
+     e.preventDefault()
+     this.props.updateEntry(this.props.userId, entryId)
+ }
     
     render(){
     console.log(this.props)  
