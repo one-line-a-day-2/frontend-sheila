@@ -112,9 +112,13 @@ const entryReducer = (state = initialState, action) => {
                 isUpdating:false,
                 fetchEntries:false,
                 error: false, 
-                entries: [...state.entries, action.payload]
-
-
+                entries: state.entries.map(entry => {
+                    if( entry.id === action.payload.id){
+                        return action.payload
+                    }else{
+                        return entry
+                    }
+                })
             }
 
             case ENTRY_UPDATE_FAILURE:

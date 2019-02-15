@@ -11,8 +11,9 @@ class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isUpdating: false,
-            entry: ''
+            isEditing: false,
+            entry: '',
+            activeEntry: null
         }
     }
 
@@ -31,16 +32,24 @@ class HomePage extends Component {
 
  updateEntry = entry =>{
     // e.preventDefault();
-    const entryUpdate = this.props.entries.find(entryItem => entryItem.id === entry.id)
-    this.props.updateEntry(this.props.userId, entry)
-    this.setState({ 
-        entry: entryUpdate, isUpdating: false
-    })}
+    // const entryUpdate = this.props.entries.find(entryItem => entryItem.id === entry.id)
+    // this.props.updateEntry(this.props.userId, entry)
+
+    this.setState({ entry: entry.entry, isEditing: true, activeEntry: entry.id })
+}
+
+newUpdate = () => {
+    const entry = this.props.entries.find(entry => entry.id === this.state.activeEntry)
+    const updatedEntry = {...entry, entry: this.state.entry }
+    this.props.updateEntry(this.props.userId, updatedEntry)
+    this.setState({entry:'', isEditing: false, activeEntry: null})
+}
+
 
 // this is for the add entry after changing it from the route //
-handleSubmit = e => {
+handleSubmit = () => {
     console.log(this.state)
-   e.preventDefault();
+//    e.preventDefault();
    this.props.createEntry(this.props.userId, {
        entry: this.state.entry,
        user_id: this.props.userId
@@ -63,11 +72,11 @@ handleSubmit = e => {
 
     render(){
     console.log(this.props)  
-    // const { entries } = this.props  
+      
     return (
-        <div>
-            <h1>HOME</h1>
-            <CreateEntry handleSubmit={this.handleSubmit} handleChanges={this.handleChanges} />
+        <div className="home-page">
+            
+            <CreateEntry updateEntry={this.updateEntry} newUpdate={this.newUpdate} entry={this.state.entry} isEditing={this.state.isEditing} handleSubmit={this.handleSubmit} handleChanges={this.handleChanges} />
             <EntriesList entries={this.props.entries} deleteEntry={this.deleteEntry} updateEntry={this.updateEntry}/>
 
         </div>
