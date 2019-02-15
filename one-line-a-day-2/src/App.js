@@ -9,7 +9,7 @@ import NavBar from './components/Layout/NavBar';
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
 import HomePage from './components/MainPage/HomePage';
-import CreateEntry from './components/MainPage/CreateEntry';
+// import CreateEntry from './components/MainPage/CreateEntry';
 // import EntrySummary from './components/MainPage/CreateEntry';
 import EntryDetail from './components/MainPage/EntryDetail';
 
@@ -33,7 +33,7 @@ render() {
         <Route path='/signup' component={SignUp}/>
         <Route exact path='/' component={HomePage}/>
         <Route path='/homepage/:id' component={EntryDetail} />
-        <Route path='/create' component={CreateEntry}/>        
+        {/* <Route path='/create' component={CreateEntry}/>         */}
         </Switch>
       </div>
     );

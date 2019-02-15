@@ -7,7 +7,8 @@ import {LOGIN_START,
 const initialState = {
     fetchLogin: false,
     error: null,
-    userId: 0
+    userId: 0,
+  
 }
 
 

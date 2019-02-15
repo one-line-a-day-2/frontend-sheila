@@ -67,7 +67,7 @@ export const fetchEntry = (userID) => dispatch => {
 
 
 //this: creates a new entry 
-export const createEntry = (userID, entry) => dispatch =>{
+export const createEntry = (userID, addEnt) => dispatch =>{
     dispatch({ type: ENTRY_ADD_START })
     const token = localStorage.getItem('jwt')
     const newAdd = {
@@ -76,7 +76,7 @@ export const createEntry = (userID, entry) => dispatch =>{
         }
     }
     axios
-    .post(`https://one-line-a-day-2.herokuapp.com/api/users/${userID}/entries`, entry, newAdd)
+    .post(`https://one-line-a-day-2.herokuapp.com/api/users/${userID}/entries`, addEnt, newAdd)
     .then(res =>{
         console.log(res)
         dispatch({
@@ -106,21 +106,20 @@ export const deleteEntry = (userID, entryID) => dispatch =>{
 }
 
 
-// export const updateEntry = (userID, entryID) => dispatch => {
-//     dispatch({ type: ENTRY_UPDATE_START })
-//     const token = localStorage.getItem('jwt')
-//     const updateEn = {
-//         headers: {
-//             Authorization: token
-//         }
-//     }
-//     axios
-//     .put('https://one-line-a-day-2.herokuapp.com/api/users/${userID}/entries/${entryID}',updateEn)
-//     .then(res => {dispatch ({ type: ENTRY_UPDATE_SUCCESS,payload: entryID })
-        // })
-        // .catch(err => dispatch({ type: ENTRY_UPDATE_FAILURE,payload: err})
-
-// }
+export const updateEntry = (userID, entry) => dispatch => {
+    dispatch({ type: ENTRY_UPDATE_START })
+    const token = localStorage.getItem('jwt')
+    const updateEn = {
+        headers: {
+            Authorization: token
+        }
+    }
+    axios
+    .put(`https://one-line-a-day-2.herokuapp.com/api/users/${userID}/entries/${entry.id}`, entry, updateEn)
+    .then(res => {dispatch({ type: ENTRY_UPDATE_SUCCESS,payload: entry})
+        })
+        .catch(err => dispatch({ type: ENTRY_UPDATE_FAILURE,payload: err}))
+    }
 
 
 

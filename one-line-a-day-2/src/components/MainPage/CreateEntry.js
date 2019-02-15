@@ -1,35 +1,35 @@
 import React from 'react'; 
 // import axios from 'axios';
-import { connect } from 'react-redux';
-// import { createEntry } from './components/store/actions/entryActions';
-import { createEntry, fetchEntry } from '../store/actions/entryActions';
+// import { connect } from 'react-redux';
+// // import { createEntry } from './components/store/actions/entryActions';
+// import { createEntry, fetchEntry } from '../store/actions/entryActions';
 
 
-class CreateEntry extends React.Component {
-  constructor(props) {
-    super(props) 
-        this.state = {
-            entry: ''
+function CreateEntry(props) {
+//   constructor(props) {
+//     super(props) 
+//         this.state = {
+//             entry: ''
             
-        }
-    }
+//         }
+//     }
     
     //  this.onSubmit = this.onSubmit.bind(this);
     // this.handleChanges = this.handleChanges.bind(this)
 
 
 
-   handleSubmit = e => {
-     console.log(this.state)
-    e.preventDefault();
-    this.props.createEntry(this.props.userId, {
-        entry: this.state.entry,
-        user_id: this.props.userId
-    })
+//    handleSubmit = e => {
+//      console.log(this.state)
+//     e.preventDefault();
+//     this.props.createEntry(this.props.userId, {
+//         entry: this.state.entry,
+//         user_id: this.props.userId
+//     })
 
-    this.props.fetchEntry();
-    this.props.history.push('/')
-   }
+//     this.props.fetchEntry();
+//     this.props.history.push('/')
+//    }
     
   
   //  handleSubmit = e => {
@@ -47,36 +47,29 @@ class CreateEntry extends React.Component {
   //       console.log({ Error: err });
   //     }); 
 
-
-    
-
-
-   
-
-
-    handleChanges = e => {
-        console.log(e);
-        e.preventDefault();
-        this.setState({
-            [e.target.name]: e.target.value
-        })}
+    // handleChanges = e => {
+    //     console.log(e);
+    //     e.preventDefault();
+    //     this.setState({
+    //         [e.target.name]: e.target.value
+    //     })}
 
 
-render() {
+
 
     // const { username, password } = this.state;
     return (
         <div className="createContainer">
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={props.handleSubmit}>
         <h2 className='deep-purple-text text-darken-2'>Create An Entry:</h2>
 
         <input 
                     name='entry'
                     type='text'
-                    value={this.state.entry}
+                    value={props.entry}
                     placeholder='Start here...'
-                    onChange={this.handleChanges}
+                    onChange={props.handleChanges}
                 />
 
               
@@ -92,15 +85,16 @@ render() {
         </div>
     )
 }
-} 
-
-const mapStateToProps = state => {
-    return{
-       fetchEntries: state.entry.fetchEntries,
-       entries:state.entry.entries,
-       userId: state.auth.userId
-    }
-}
 
 
-export default connect(mapStateToProps,{createEntry,fetchEntry})(CreateEntry);
+export default CreateEntry;
+// const mapStateToProps = state => {
+//     return{
+//        fetchEntries: state.entry.fetchEntries,
+//        entries:state.entry.entries,
+//        userId: state.auth.userId
+//     }
+// }
+
+
+// export default connect(mapStateToProps,{createEntry,fetchEntry})(CreateEntry);

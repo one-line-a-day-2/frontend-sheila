@@ -17,7 +17,7 @@ const initialState = {
         entries: [],
         fetchEntries:false,
         deleteEntries:false,
-        updateEntries:false,
+        isUpdating:false,
         error: null
 
 }
@@ -88,43 +88,43 @@ const entryReducer = (state = initialState, action) => {
                 error: null
             }
 
-            // case ENTRY_DELETE_FAILURE:
-            // return{
-            //     ...state,
-            //     deleteEntries:false,
-            //     error: action.payload
+            case ENTRY_DELETE_FAILURE:
+            return{
+                ...state,
+                deleteEntries:false,
+                error: action.payload
 
-            // }
-
-            // case ENTRY_UPDATE_START:
-            //     return{
-            //         ...state,
-            //         updateEntries:true,
-
-            // }
-
-            // case ENTRY_UPDATE_SUCCESS:
-            // return{
-            //     ...state,
-            //     updateEntries:false,
-
-            // }
-
-            // case ENTRY_UPDATE_FAILURE:
-            //     return{
-            //         ...state,
-            //         updateEntries:false,
-            //         error: action.payload
-
-            // }
+            }
 
 
 
+            case ENTRY_UPDATE_START:
+                return{
+                    ...state,
+                    isUpdating:true,
+                    fetchEntries: true,
+
+            }
+
+            case ENTRY_UPDATE_SUCCESS:
+            return{
+                ...state,
+                isUpdating:false,
+                fetchEntries:false,
+                error: false, 
+                entries: [...state.entries, action.payload]
 
 
+            }
 
+            case ENTRY_UPDATE_FAILURE:
+                return{
+                    ...state,
+                    isUpdating:false,
+                    fetchEntries: false,
+                    error: action.payload
 
-
+            }
             default: 
                 return state;
      }
